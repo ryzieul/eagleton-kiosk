@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Garamond', 'Georgia', serif;
+  overflow: hidden;
+  height: 100vh;
+  background: #000;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Background slideshow */
+.background-slideshow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 2s ease-in-out;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: slowZoom 20s ease-out forwards;
+}
+
+@keyframes slowZoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
+  }
+}
+
+/* Glass overlay card */
+.content-card {
+  position: relative;
+  z-index: 10;
+  padding: 60px 80px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(103, 71, 67, 0.1);
+  text-align: center;
+  animation: fadeInUp 1.5s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.eagleton-text {
+  font-family: LoveFromBold;
+  font-size: 6rem;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: -1.5px;
+  margin-bottom: 10px;
+  text-shadow: 0px 0px 2px rgba(36, 33, 33, 0.4);
+}
+
+.descriptor {
+  font-size: 9rem;
+  font-family: CordierScript;
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 300;
+  letter-spacing: -1.5px;
+  text-shadow: 0px 0px 2px rgba(36, 33, 33, 0.4);
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive adjustments for iPad */
+@media (max-width: 1200px) {
+  .content-card {
+    padding: 30px 50px;
+  }
+  .eagleton-text {
+    font-size: 2.5rem;
+  }
+  .descriptor {
+    font-size: 3.75rem;
+  }
+}
